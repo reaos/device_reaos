@@ -17,13 +17,19 @@
  */
 -->
 <resources>
-    <!-- Default for UI touch sounds enabled -->
+    <!-- Disable sound effects -->
     <bool name="def_sound_effects_enabled">false</bool>
 
-    <bool name="def_lockscreen_disabled">true</bool>
+    <!-- Disable the animations -->
+    <fraction name="def_window_animation_scale">0%</fraction>
+    <fraction name="def_window_transition_scale">0%</fraction>
 
-    <!-- maximize the timeout to INT_MAX about 500+ hours -->
-    <integer name="def_screen_off_timeout">2147483647</integer>
+    <!-- Allow the user to install non-market applications by default -->
+    <bool name="def_install_non_market_apps">true</bool>
 
-    <bool name="def_package_verifier_enable">false</bool>
+    <!-- Enable Wi-Fi by default -->
+    <bool name="def_wifi_on">true</bool>
+
+    <!-- Disable notifications on the lock screen -->
+    <integer name="def_lock_screen_show_notifications">0</integer>
 </resources>
