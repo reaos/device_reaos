@@ -14,15 +14,5 @@
 # limitations under the License.
 #
 
-PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/reaos_x86_64.mk \
-    $(LOCAL_DIR)/reaos_x86_64_only.mk \
-    $(LOCAL_DIR)/reaos_arm64.mk \
-    $(LOCAL_DIR)/reaos_arm64_only.mk \
-
-COMMON_LUNCH_CHOICES := \
-    reaos_x86_64-userdebug \
-    reaos_x86_64_only-userdebug \
-    reaos_arm64-userdebug \
-    reaos_arm64_only-userdebug \
-
+PRODUCT_MAKEFILES := $(LOCAL_DIR)/reaos.mk
+COMMON_LUNCH_CHOICES := reaos-bp1a-user

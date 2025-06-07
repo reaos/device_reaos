@@ -12,7 +12,40 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-PRODUCT_MANUFACTURER := reaos
+$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit_only.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
+
+# Define the product name and device
+PRODUCT_NAME := reaos
+PRODUCT_DEVICE := reaos
+PRODUCT_MODEL := reaOS 15
+PRODUCT_BRAND := reaos
+PRODUCT_MANUFACTURER := reaOS
+
+ifeq ($(TARGET_ARCH),x86_64)
+    PRODUCT_COPY_FILES += \
+        device/reaos/mediacodec.policy.x86:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediacodec.policy \
+
+    PRODUCT_PROPERTY_OVERRIDES += \
+        ro.enable.native.bridge.exec=1 \
+        ro.dalvik.vm.isa.arm64=x86_64 \
+        ro.dalvik.vm.isa.arm=x86 \
+        ro.dalvik.vm.native.bridge=libnb.so \
+
+    $(call inherit-product, device/reaos-prebuilts/prebuilts_x86.mk)
+else
+    PRODUCT_COPY_FILES += \
+        device/reaos/mediacodec.policy.arm:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediacodec.policy \
+
+    $(call inherit-product, device/reaos-prebuilts/prebuilts_arm.mk)
+endif
+
+
+ifneq ("$(wildcard vendor/gapps/arm64)", "")
+    $(call inherit-product, vendor/gapps/arm64/arm64-vendor.mk)
+endif
+
+DEVICE_PACKAGE_OVERLAYS := $(LOCAL_PATH)/overlay
 
 #$(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 #PRODUCT_COMPRESSED_APEX := false
