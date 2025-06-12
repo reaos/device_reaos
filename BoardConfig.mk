@@ -23,3 +23,7 @@ TARGET_USERIMAGES_SPARSE_EXT_DISABLED := true
 
 DEVICE_MANIFEST_FILE += device/reaos/manifest.xml
 
+# Workaround for macOS
+ifeq ($(HOST_CROSS_OS),windows)
+	WITH_DEXPREOPT := false
+endif
