@@ -1,2 +1,0 @@
-ro.boot.use_reaos_c2=1
-persist.sys.usb.config=adb

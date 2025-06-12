@@ -1,10 +1,9 @@
-ro.hardware=reaos
-
-# disable ueventd cold-boot for performance
+# Disable ueventd cold-boot for performance
 ro.cold_boot_done=true
 
 persist.sys.fuse=1
 
-ro.radio.noril=yes
-
 debug.sf.nobootanimation=1
+
+ro.boot.use_reaos_c2=1
+persist.sys.usb.config=adb
