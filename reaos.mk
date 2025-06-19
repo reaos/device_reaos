@@ -120,8 +120,8 @@ PRODUCT_PACKAGES += \
     android.hardware.thermal@2.0-service.mock \
 
 
-ifneq ($(REAOS_DISABLE_OMX),true)
-$(call inherit-product, hardware/reaos/omx/omx.mk)
+ifeq ($(REAOS_ENABLE_OMX),true)
+    $(call inherit-product, hardware/reaos/omx/omx.mk)
 endif
 
 $(call inherit-product, hardware/reaos/c2/c2.mk)
